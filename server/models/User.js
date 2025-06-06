@@ -1,28 +1,15 @@
-import { DataTypes } from 'sequelize';
-import sequelize from '../config/db.js'; // tùy đường dẫn cấu hình sequelize của bạn
+import mongoose from "mongoose";
 
-const User = sequelize.define('User', {
-  username: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  image: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  role: {
-    type: DataTypes.ENUM('admin', 'user'),
-    defaultValue: 'user',
-  },
-  recentSearchedCities: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-});
+const userSchema = new mongoose.Schema({
+    _id: {type: String, required: true},
+    username: {type: String, required: true},
+    email: {type: String, required: true},
+    image: {type: String, required: true},
+    rote: {type: String, enum: ["admin", "user"], default: "user"},
+    recentSearchedCities: [{type: String, required: true}],
+},{timestamps: true}
+);
+
+const User = mongoose.model("User", userSchema);
 
 export default User;

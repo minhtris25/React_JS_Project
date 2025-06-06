@@ -1,18 +1,11 @@
-import { Sequelize } from 'sequelize';
-
-const sequelize = new Sequelize('hotel_booking', 'root', '', {
-  host: 'localhost',
-  dialect: 'mysql',
-});
+import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    await sequelize.authenticate();
-    console.log('MySQL connected');
+    mongoose.connection.on('connected', () => console.log('Database connected'));
+    await mongoose.connect(`${process.env.MONGO_URI}/hotel-booking`)
   } catch (error) {
-    console.error('Connection failed:', error);
+    console.log(error.message);
   }
-};
-
-export default connectDB; // ← default export
-export { sequelize };     // ← named export nếu cần dùng Sequelize instance
+}
+export default connectDB;
