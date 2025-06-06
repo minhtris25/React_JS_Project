@@ -5,24 +5,20 @@ import connectDB from './config/database.js';
 import { clerkMiddleware } from '@clerk/express';
 import clerkWebhooks from './controller/clerkWebhooks.js';
 
+// Kết nối DB
 connectDB();
 
 const app = express();
 app.use(cors());
-
-// Middleware Clerk
 app.use(express.json());
 app.use(clerkMiddleware());
 
-//APT to listen to Clerk webhooks
+// Routes
 app.use('/api/clerk', clerkWebhooks);
+app.get('/', (req, res) => {
+  res.send("Hello từ Vercel!");
+});
 
-
-
-export default function handler(req, res) {
-    res.send("Hello từ Vercel!");
-}
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+// ❌ KHÔNG dùng app.listen() trên Vercel
+// ✅ Export app cho Vercel xử lý
+export default app;
