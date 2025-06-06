@@ -1,10 +1,18 @@
-const { Sequelize } = require('sequelize');
-require('dotenv').config();
+import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-  host: process.env.DB_HOST,
+const sequelize = new Sequelize('hotel_booking', 'root', '', {
+  host: 'localhost',
   dialect: 'mysql',
-  logging: false,
 });
 
-module.exports = sequelize;
+const connectDB = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('MySQL connected');
+  } catch (error) {
+    console.error('Connection failed:', error);
+  }
+};
+
+export default connectDB; // ← default export
+export { sequelize };     // ← named export nếu cần dùng Sequelize instance
