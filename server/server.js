@@ -19,7 +19,9 @@ app.use('/api/clerk', clerkWebhooks);
 
 
 
-app.get('/', (req, res) => { res.send('Hello World!'); })
+export default function handler(req, res) {
+    res.send("Hello từ Vercel!");
+}
 
 const PORT = process.env.PORT || 3000;
 
