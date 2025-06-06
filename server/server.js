@@ -1,4 +1,3 @@
-// server.js
 import express from 'express';
 import "dotenv/config";
 import cors from 'cors';
@@ -10,16 +9,18 @@ connectDB();
 
 const app = express();
 app.use(cors());
+
+// Middleware Clerk
 app.use(express.json());
 app.use(clerkMiddleware());
 
-// Webhook
+//APT to listen to Clerk webhooks
 app.use('/api/clerk', clerkWebhooks);
 
-// Test
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 
-// 👉 Export app để Vercel xử lý
-export default app;
+
+app.get('/', (req, res) => { res.send('Hello World!'); })
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
