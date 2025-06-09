@@ -2,11 +2,19 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import RoomDetails from './pages/RoomDetails';
+<<<<<<< HEAD
 import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import MyBookings from './pages/MyBookings';
 import AllRooms from './pages/AllRooms';
 import Footer from './components/Footer';
+=======
+import MyBookings from './pages/MyBookings';
+import AllRooms from './pages/AllRooms';
+import Footer from './components/Footer';
+import { useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+>>>>>>> ecae818 (api)
 
 const App = () => {
   const isOwnerPath = useLocation().pathname.includes('owner');
