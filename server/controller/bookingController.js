@@ -38,13 +38,13 @@ export const createBooking = async (req, res)=>{
         const user = req.user._id;
 
         //Before Booking Check Availability
-        const isVailable = await checkAvailability({
+        const isAvailable = await checkAvailability({
             checkInDate,
             checkOutDate,
             room
         });
 
-        if(!isVailable){
+        if(!isAvailable){
             return res.json({success: false, message: "Room is not available"})
         }
         const roomData = await Room.findById(room).populate("hotel");
@@ -79,7 +79,7 @@ export const createBooking = async (req, res)=>{
 export const getUserBookings = async (req, res) =>{
     try {
         const user = req.user._id;
-        const bookings = await Booking.find({user}).populate("room hotel").sort({createAt: -1})
+        const bookings = await Booking.find({user}).populate("room hotel").sort({createdAt: -1})
         res.json({success: true, bookings})
     } catch (error) {
         res.json({ success: false, message: "Failed to fetch bookings"});
@@ -88,16 +88,16 @@ export const getUserBookings = async (req, res) =>{
 
 export const getHotelBookings = async (req, res) =>{
     try {
-        const hotel = await Hotel.findOne({Owner: req.auth.userId});
+        const hotel = await Hotel.findOne({owner: req.auth.userId});
     if(!hotel){
         return res.json({ success: false, message: "No Hotel found"});
     }
-    const bookings = await Booking.find({hotel: hotel._id}).populate("room hotel user").sort( {createAt: -1});
+    const bookings = await Booking.find({hotel: hotel._id}).populate("room hotel user").sort( {createdAt: -1});
     //Total Bookings
     const totalBookings = bookings.length;
     //Total Revenue
     const totalRevenue = bookings.reduce((acc, booking)=>acc + booking.totalPrice,0 )
-    res.json({success: true, dashborardData: {totalBookings, totalRevenue, bookings}})
+    res.json({success: true, dashboardData: {totalBookings, totalRevenue, bookings}})
     } catch (error) {
         res.json({success: false, message: "false to fetch bookings"})
     }
