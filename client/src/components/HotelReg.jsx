@@ -1,6 +1,7 @@
 import React from 'react'
 import { cities } from '../assets/assets'
 import { useAppContext } from '../conext/AppContext' 
+import { assets } from '../assets/assets'
 
 const HotelReg = () => {
 
