@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
 import { useClerk, UserButton } from '@clerk/clerk-react';
 import { useAppContext } from '../conext/AppContext';
@@ -73,7 +73,7 @@ const Navbar = () => {
         { user && (
           <button
           className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${
-            isScrolled ? 'text-black' : 'text-white'} transition-all`}onClick={() => isOwner ? navigate('/owner') : setShowHotelReg(true)}>
+            isScrolled ? 'text-black' : 'text-white'} transition-all`} onClick={() => isOwner ? navigate('/owner') : setShowHotelReg(true)}>
           {isOwner ? 'Dashboard' : 'List Your Hotel'}
         </button>
         )
@@ -125,9 +125,8 @@ const Navbar = () => {
         ))}
 
         {user && <button
-          className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all"
-          onClick={() => navigate('/owner')}>
-          Dashboard
+          className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all" onClick={() => isOwner ? navigate('/owner') : setShowHotelReg(true)}>
+            {isOwner ? 'Dashboard' : 'List Your Hotel'}
         </button>}
 
         {!user && <button onClick={openSignIn}
