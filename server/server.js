@@ -24,7 +24,7 @@ app.use(clerkMiddleware());
 //APT to listen to Clerk webhooks
 app.use('/api/clerk', clerkWebhooks);
 
-app.get('/', (req, res) => { res.send('Hello World!'); })
+
 app.use('/api/user', userRouter)
 app.use('/api/hotels', hotelRouter)
 app.use('/api/rooms', roomRouter)

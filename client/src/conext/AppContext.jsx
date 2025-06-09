@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { createContext,useContext } from 'react';
+import { createContext,useContext, useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUser, useAuth } from '@clerk/clerk-react';  
+import { useUser, useAuth } from '@clerk/clerk-react'; 
+import { toast } from 'react-hot-toast'; 
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
-const AppConext = createContext();
+const AppContext = createContext();
 
 
 export const AppProvider = ({ children }) => {
@@ -29,11 +30,15 @@ export const AppProvider = ({ children }) => {
                 fetchUser();
             }, 5000) 
         }
-
     }catch (error) {
-
+        toast.error(error.message);
         }
-            
+    }
+    useEffect(() => { 
+        if(user) {
+            fetchUser();
+        }
+    },[user] )
 
     const value = {
         currency,
@@ -44,15 +49,17 @@ export const AppProvider = ({ children }) => {
         setIsOwner,
         axios,
         showHotelReg,
-        setShowHotelReg
+        setShowHotelReg,
+        searchedCities,
+        setSearchedCities,
     }
 
 
     return (
-        <AppConext.Provider value={value}>
+        <AppContext.Provider value={value}>
         {children}
-        </AppConext.Provider>
+        </AppContext.Provider>
     )
 }
-}
-export const useAppContext = () =>  useContext(AppConext);
+
+export const useAppContext = () =>  useContext(AppContext);
