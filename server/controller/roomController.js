@@ -19,7 +19,7 @@ export const createRoom = async (req, res)=>{
         const images = await Promise.all(uploadImages)
 
         await Room.create({
-            hotel: hotel_id,
+            hotel: hotel._id,
             roomType,
             pricePerNight: +pricePerNight,
             amenities: JSON.parse(amenities),

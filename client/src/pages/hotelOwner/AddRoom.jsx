@@ -48,7 +48,7 @@ const AddRoom = () => {
         formData.append('amenities', JSON.stringify(amenities))
 
         Object.keys(images).forEach((key) => {
-          images[key] && formData.append('image', images[key])
+          images[key] && formData.append('images', images[key])
 
         })
         const {data} = await axios.post('/api/rooms/', formData, {
