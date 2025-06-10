@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import Title from '../../components/Title'
-import { roomsDummyData } from '../../assets/assets'
 import { useAppContext } from '../../conext/AppContext'
 import toast from 'react-hot-toast'
 import { useEffect } from 'react'
@@ -37,7 +36,7 @@ return (
     subTitle='View, edit, or manage all listed rooms. Keep the information up-to-date to provide the best experience for users.'/>
     <p className='text-gray-500 mt-8'>All Rooms</p>
 
-    <div className='w-full max-w-3xl text-left border border-gray-300 rounded-lg max-h-80 overflow-y-scroll mt-3'></div>
+    <div className='w-full max-w-3xl text-left border border-gray-300 rounded-lg max-h-80 overflow-y-scroll mt-3'>
       <table className='w-full'>
           <thead className='bg-gray-50'>
               <tr>
@@ -74,6 +73,7 @@ return (
             </tbody>
             
       </table>
+      </div>
   </div>
 )
 }
