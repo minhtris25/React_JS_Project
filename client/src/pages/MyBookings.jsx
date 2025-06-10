@@ -72,14 +72,14 @@ const MyBookings = () => {
                     <div>
                         <p>Check In:</p>
                         <p className='className="text-gray-500 text-sm"'>
-                            {new Date(booking.checkInDate).toDateString}
+                            {new Date(booking.checkInDate).toDateString()}
                         </p>
                     </div>
 
                     <div>
                         <p>Check Out:</p>
                         <p className='className="text-gray-500 text-sm"'>
-                            {new Date(booking.checkOutDate).toDateString}
+                            {new Date(booking.checkOutDate).toDateString()}
                         </p>
                     </div>
                 </div>

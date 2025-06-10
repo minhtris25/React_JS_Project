@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
- 
   "scripts": {
     "server": "nodemon server.js",
     "start": "node server.js"
@@ -20,6 +19,7 @@
     "express": "^5.1.0",
     "mongoose": "^8.15.1",
     "multer": "^2.0.1",
+    "nodemailer": "^7.0.3",
     "sequelize": "^6.37.7",
     "svix": "^1.66.0"
   },
