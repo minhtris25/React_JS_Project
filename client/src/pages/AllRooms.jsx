@@ -36,8 +36,8 @@ const AllRooms = () => {
     const [selectedSort, setSelectedSort] = useState('')
 
     const roomType = [
-        "Single bed",
-        "Double bed",
+        "Single Bed",
+        "Double Bed",
         "Luxury Room",
         "Family Suite",
     ];
@@ -71,8 +71,7 @@ const AllRooms = () => {
         setSelectedSort(sortOption);
     }
     const matchesRoomType = (room)=>{
-    return selectedFilters.roomType.length === 0 || selectedFilters. roomType.
-    includes(room.roomType);
+    return selectedFilters.roomType.length === 0 || selectedFilters.roomType.includes(room.roomType);
     }
 // Function to check if a room matches the selected price ranges
     const matchesPriceRange = (room)=>{
@@ -137,13 +136,13 @@ const AllRooms = () => {
             {filteredRooms.map((room)=>(
                 <div key={room._id}
                 className='flex flex-col md:flex-row items-start py-10 gap-6 border-b border-gray-300 last:pb-30 last:border-0'>
-                    <img onClick={()=> {navigate(`/rooms/${room._id}`); window.scrollTo(0,0)}}
+                    <img onClick={()=> {navigate(`/rooms/${room._id}`); scrollTo(0,0)}}
                     src={room.images[0]} alt="hotel-img" title='View Room Details'
                     className='max-h-65 md:w-1/2 rounded-xl shadow-lg object-cover cursor-pointer' />
                     <div className='md:w-1/2 flex flex-col gap-2'>
                         <p className='text-gray-500'>
                             {room.hotel.city}</p>
-                        <p onClick={()=> {navigate(`/rooms/${room._id}`); window.scrollTo(0,0)}}
+                        <p onClick={()=> {navigate(`/rooms/${room._id}`); scrollTo(0,0)}}
                         className='text-gray-800 text-3xl font-playfair cursor-pointer'>
                             {room.hotel.name}</p>
                         <div className='flex items-center'>
@@ -190,7 +189,7 @@ const AllRooms = () => {
                 <div className='px-5 pt-5'>
                     <p className='font-medium text-gray-800 pb-2'>Popular filters</p>
                      {roomType.map((room, index)=>(
-                        <CheckBox key={index} label={room} selected={selectedFilters.roomType.includes(room)} onChange={(checked)=>handleFilterchange(checked,room,'roomType')} />
+                        <CheckBox key={index} label={room} selected={selectedFilters.roomType.includes(room)} onChange={(checked)=>handleFilterchange(checked, room, 'roomType')} />
                      ))}
                 </div>
 
