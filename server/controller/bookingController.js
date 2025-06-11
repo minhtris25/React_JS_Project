@@ -73,40 +73,24 @@ export const createBooking = async (req, res)=>{
     to: req.user.email,
     subject: 'Thông tin đặt phòng khách sạn', // Tiếng Việt hóa
     html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #2d3748;">Chi tiết đặt phòng của bạn</h2>
+        <div>
+            <h2>Chi tiết đặt phòng của bạn</h2>
             <p>Xin chào <strong>${req.user.username}</strong>,</p>
             <p>Cảm ơn bạn đã đặt phòng! Dưới đây là thông tin chi tiết:</p>
             
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 10px;">
-                    <strong>Mã đặt phòng:</strong> ${booking._id}
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong>Tên khách sạn:</strong> ${roomData.hotel.name}
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong>Địa chỉ:</strong> ${roomData.hotel.address}
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong>Ngày nhận phòng:</strong> ${new Date(booking.checkInDate).toLocaleDateString()}
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong>Ngày trả phòng:</strong> ${new Date(booking.checkOutDate).toLocaleDateString()}
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong>Tổng thanh toán:</strong> ${process.env.CURRENCY || '$'}${booking.totalPrice}
-                </li>
-                <li style="margin-bottom: 10px;">
-                    <strong>Số đêm:</strong> ${nights} đêm
-                </li>
+            <ul>
+                <li><strong>Mã đặt phòng:</strong> ${booking._id}</li>
+                <li><strong>Tên khách sạn:</strong> ${roomData.hotel.name}</li>
+                <li><strong>Địa chỉ:</strong> ${roomData.hotel.address}</li>
+                <li><strong>Ngày nhận phòng:</strong> ${booking.checkInDate.toDateString()}</li>
+                <li><strong>Tổng thanh toán:</strong> ${process.env.CURRENCY || '$'}${booking.totalPrice} /đêm</li>
             </ul>
             
-            <p style="margin-top: 20px;">Chúng tôi rất mong được đón tiếp bạn!</p>
+            <p>Chúng tôi rất mong được đón tiếp bạn!</p>
             <p>Nếu bạn cần thay đổi thông tin đặt phòng, vui lòng liên hệ với chúng tôi.</p>
             
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
-                <p style="font-size: 12px; color: #718096;">
+            <div>
+                <p>
                     Đây là email tự động, vui lòng không trả lời.
                 </p>
             </div>
