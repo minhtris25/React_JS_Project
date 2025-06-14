@@ -4,6 +4,7 @@ import { assets } from '../assets/assets'
 import { useAppContext } from '../conext/AppContext'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
+import { deleteModel } from 'mongoose'
 
 const MyBookings = () => {
 
@@ -45,6 +46,26 @@ const MyBookings = () => {
             }
         },[user])
 
+        const handleDelete = async (bookingId) => {
+        if (!window.confirm("Bạn có chắc chắn muốn xoá booking này?")) return;
+
+        try {
+            const { data } = await axios.delete(`/api/bookings/${bookingId}`, {
+            headers: {
+                Authorization: `Bearer ${await getToken()}`
+            }
+            });
+
+            if (data.success) {
+            // Xoá khỏi state
+            setBookings((prev) => prev.filter((b) => b._id !== bookingId));
+            } else {
+            toast.error(data.message);
+            }
+        } catch (error) {
+            toast.error("Xoá thất bại: " + error.message);
+        }
+    };
 
   return (
     <div className='py-28 md:pb-35 md:pt-32 px-4 md:px-16 lg:px-24 xl:px-32'>
@@ -63,6 +84,13 @@ const MyBookings = () => {
 
             {bookings.map((booking)=>(
                 <div key={booking._id} className='grid grid-cols-1 md:grid-cols-[3fr_2fr_1fr] w-full border-b border-gray-300 py-6 first:border-t'>
+               {/* --- Nút X xoá --- */}
+            <button
+            onClick={() => handleDelete(booking._id)}
+            className="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-xl font-bold"
+            >
+            &times;
+            </button>
                 {/* --- Hotels Details --- */}
                 <div className='flex flex-col md:flex-row'>
                     <img src={booking.room.images[0]} alt="hotel-img" 

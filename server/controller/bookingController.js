@@ -183,3 +183,24 @@ export const stripePayment = async (req, res)=>{
         res.json({success:false , message:`Payment Failed: ${error.message}`})
     }
 } 
+
+// DELETE /api/bookings/:id
+export const deleteBooking = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id);
+
+    if (!booking) {
+      return res.status(404).json({ success: false, message: "Booking not found" });
+    }
+
+    if (booking.user.toString() !== req.user.id) {
+      return res.status(403).json({ success: false, message: "Not authorized" });
+    }
+
+    await booking.deleteOne();
+    res.json({ success: true, message: "Booking deleted successfully" });
+  } catch (err) {
+    console.error("Delete error:", err.message);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
