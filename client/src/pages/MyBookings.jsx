@@ -4,7 +4,7 @@ import { assets } from '../assets/assets'
 import { useAppContext } from '../conext/AppContext'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
-import { deleteModel } from 'mongoose'
+
 
 const MyBookings = () => {
 
@@ -83,7 +83,7 @@ const MyBookings = () => {
             </div>
 
             {bookings.map((booking)=>(
-                <div key={booking._id} className='grid grid-cols-1 md:grid-cols-[3fr_2fr_1fr] w-full border-b border-gray-300 py-6 first:border-t'>
+                <div key={booking._id} className='relative grid grid-cols-1 md:grid-cols-[3fr_2fr_1fr] w-full border-b border-gray-300 py-6 first:border-t'>
                {/* --- Nút X xoá --- */}
             <button
             onClick={() => handleDelete(booking._id)}
