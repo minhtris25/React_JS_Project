@@ -6,8 +6,8 @@ import StarRating from './StarRating'
 const Testimonial = () => {
   return (
     <div className='flex flex-col items-center px-6 md:px-16 lg:px-24 bg-slate-50 pt-20 pb-30'>
-        <Title title="What Our Guests Say" subTitle="Discover why discerning travelers
-        consistently choose QuickStay for their exclusive and luxurious accommodation around the world."/>
+        <Title title="Khách hàng của chúng tôi nói gì" subTitle="Khám phá lý do tại sao những du khách sành điệu
+        liên tục chọn QuickStay cho chỗ ở sang trọng và độc quyền của họ trên toàn thế giới."/>
 
         <div className="flex flex-wrap items-center  gap-6 mt-20 ">
                 {testimonials.map((testimonial) => (

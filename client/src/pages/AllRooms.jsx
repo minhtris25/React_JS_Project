@@ -127,10 +127,10 @@ const AllRooms = () => {
     <div className='flex flex-col-reverse lg:flex-row items-start justify-between pt-28 md:pt-35 px-4 md:px-16 lg:px-24 xl:px-32'>
         <div>
             <div className='flex flex-col items-start text-left'>
-                <h1 className='font-playfair text-4xl md:text-[40px]'>Hotel Rooms</h1>
+                <h1 className='font-playfair text-4xl md:text-[40px]'>Phòng Khách Sạn</h1>
                 <p className='text-sm md:text-base text-gray-500/90 mt-2 max-w-174'>
-                Take advantage of our limited-time offers and special packages to 
-                enhance your stage and create unforgettable memories.</p>
+                Hãy tận dụng các ưu đãi có thời hạn và gói đặc biệt của chúng tôi để
+                nâng cao trải nghiệm của bạn và tạo ra những kỷ niệm khó quên.</p>
             </div>
 
             {filteredRooms.map((room)=>(
@@ -147,7 +147,7 @@ const AllRooms = () => {
                             {room.hotel.name}</p>
                         <div className='flex items-center'>
                             <StarRating />
-                            <p className='ml-2'> 200+ reviews</p>
+                            <p className='ml-2'> 200+ đánh giá</p>
                         </div>
                         <div className='flex items-center gap-1 text-gray-500 mt-2 text-sm'>
                             <img src={assets.locationIcon} alt="location-icon" />
@@ -165,7 +165,7 @@ const AllRooms = () => {
                             ))}
                         </div>
                         {/* Room Price per Night */}
-                        <p className='text-xl font-medium text-gray-700'>${room.pricePerNight}/night</p>
+                        <p className='text-xl font-medium text-gray-700'>${room.pricePerNight}/Đêm</p>
                     </div>
                 </div>
             ))}
@@ -176,32 +176,32 @@ const AllRooms = () => {
 
             <div className={`flex items-center justify-between px-5 py-2.5 min-lg:border-b
                 border-gray-300 ${openFilters && "border-b"}`}>
-                <p className='text-base font-medium text-gray-800'>FILTER</p>
+                <p className='text-base font-medium text-gray-800'>BỘ LỌC</p>
                 <div className='text-xs cursor-pointer'>
                     <span onClick={()=> setOpenFilter(!openFilters)} className='lg:hidden'> 
                         {openFilters ? 'HIDE' : 'SHOW'} </span>
-                    <span className='hidden lg-block'>CLEAR </span>
+                    <span className='hidden lg-block'>Xoá </span>
                 </div>
             </div>
 
             <div className={`${openFilters ? 'h-auto' : "h-0 lg:h-auto"} 
             overflow-hidden transition-all duration-700`}>
                 <div className='px-5 pt-5'>
-                    <p className='font-medium text-gray-800 pb-2'>Popular filters</p>
+                    <p className='font-medium text-gray-800 pb-2'>Loại Phòng</p>
                      {roomType.map((room, index)=>(
                         <CheckBox key={index} label={room} selected={selectedFilters.roomType.includes(room)} onChange={(checked)=>handleFilterchange(checked, room, 'roomType')} />
                      ))}
                 </div>
 
                 <div className='px-5 pt-5'>
-                    <p className='font-medium text-gray-800 pb-2'>Price Range</p>
+                    <p className='font-medium text-gray-800 pb-2'>Khoảng Giá</p>
                      {priceRanges.map((range, index)=>(
                         <CheckBox key={index} label={`$${currency} ${range}`} selected={selectedFilters.priceRange.includes(range)} onChange={(checked)=>handleFilterchange(checked,range,'priceRange')}/>
                      ))}
                 </div>
 
                 <div className='px-5 pt-5 pb-7'>
-                    <p className='font-medium text-gray-800 pb-2'>Sort By</p>
+                    <p className='font-medium text-gray-800 pb-2'>Sắp Xếp Theo</p>
                      {sortOptions.map((option, index)=>(
                         <RadioButton key={index} label={option} selected={selectedSort === option} onChange={()=>handleSortchange(option)} />
                      ))}

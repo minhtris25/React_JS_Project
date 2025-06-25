@@ -39,12 +39,12 @@ const HotelReg = () => {
             <div className='relative flex flex-col items-center md:w-1/2 p-8 md:p-10'>
                 <img src={assets.closeIcon} alt="close-icon" className='absolute top-4 right-4 h-4 w-4 cursor-pointer'
                 onClick={()=> setShowHotelReg(false)} />
-                <p className='text-2xl font-semibold mt-6'>Register Your Hotel </p>
+                <p className='text-2xl font-semibold mt-6'>Đăng Ký Khách Sạn Của Bạn</p>
 
                 {/* Hotel Name */}
                 <div className='w-full mt-4'>   
                     <label htmlFor="name" className='font-medium text-gray-500'>
-                        Hotel Name
+                        Tên Khách Sạn
                     </label>
                     <input id='name' onChange={(e)=> setName(e.target.value) } value={name} type="text" placeholder='Type here' 
                     className='border border-b-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required/>
@@ -53,7 +53,7 @@ const HotelReg = () => {
                 {/* Phone */}
                 <div className='w-full mt-4'>   
                     <label htmlFor="contact" className='font-medium text-gray-500'>
-                        Phone
+                        Số Điện Thoại
                     </label>
                     <input onChange={(e)=> setContact(e.target.value) } value={contact} id='contact' type="text" placeholder='Type here' 
                     className='border border-b-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required/>
@@ -62,7 +62,7 @@ const HotelReg = () => {
                  {/* Address */}
                 <div className='w-full mt-4'>   
                     <label htmlFor="address" className='font-medium text-gray-500'>
-                        Address
+                        Địa Chỉ
                     </label>
                     <input onChange={(e)=> setAddress(e.target.value) } value={address} id='address' type="text" placeholder='Type here' 
                     className='border border-b-gray-200 rounded w-full px-3 py-2.5 mt-1 outline-indigo-500 font-light' required/>
@@ -71,11 +71,11 @@ const HotelReg = () => {
                 {/* Select City Drop Down */}
                 <div className='w-full mt-4 max-w-60 mr-auto'>
                     <label htmlFor="city" className='font-medium text-gray-500'>
-                        City
+                        Thành Phố
                     </label>
                     <select onChange={(e)=> setCity(e.target.value) } value={city} id="city" className='border border-gray-200 rounded w-full px-3 
                     py-2.5 mt-1 outline-indigo-500 font-light' required>
-                        <option value="">Select City</option>
+                        <option value="">Chọn Thành Phố</option>
                         {cities.map((city)=>(
                             <option key={city} value={city}>{city}</option>
                         ))}
@@ -83,7 +83,7 @@ const HotelReg = () => {
                 </div>
                 <button className='bg-indigo-500 hover:bg-indigo-600 transition-all text-white
                  px-6 py-2 rounded cursor-pointer mt-6'>
-                    Register
+                    Đăng Ký
                 </button>
             </div>
         </form>

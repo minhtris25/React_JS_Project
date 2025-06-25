@@ -12,10 +12,10 @@ const BookIcon = () => (
 
 const Navbar = () => {
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Hotels', path: '/rooms' },
-    { name: 'Experience', path: '/' },
-    { name: 'About', path: '/' },
+    { name: 'Trang Chủ', path: '/' },
+    { name: 'Khách Sạn', path: '/rooms' },
+    { name: 'Trải Nghiệm', path: '/' },
+    { name: 'Giới Thiệu', path: '/' },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -91,7 +91,7 @@ const Navbar = () => {
         </UserButton>)
         :
         (<button onClick={openSignIn} className="bg-black text-white px-8 py-2.5 rounded-full ml-4 transition-all duration-500">
-          Login
+          Đăng Nhập
         </button>)
         }
         
@@ -135,7 +135,7 @@ const Navbar = () => {
 
         {!user && <button onClick={openSignIn}
           className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500" >
-          Login
+          đăng nhập
         </button>}
       </div>
     </nav>

@@ -78,13 +78,13 @@ const RoomDetails = () => {
                 <h1 className="text-3xl md:text-4xl font-playfair">
                     {room.hotel.name} <span className="font-inter text-sm">({room.roomType})</span>
                 </h1>
-                <p className="text-xs font-inter py-1.5 px-3 text-white bg-orange-500 rounded-full">20% OFF</p>
+                <p className="text-xs font-inter py-1.5 px-3 text-white bg-orange-500 rounded-full">Giảm 20%</p>
             </div>
 
             {/* Rating */}
             <div className="flex items-center gap-1 mt-2">
                 <StarRating />
-                <p className="ml-2">200+ reviews</p>
+                <p className="ml-2">200+ đánh giá</p>
             </div>
 
             {/* Address */}
@@ -115,7 +115,7 @@ const RoomDetails = () => {
             {/* Highlights */}
             <div className="flex flex-col md:flex-row md:justify-between mt-10">
                 <div className="flex flex-col">
-                    <h1 className="text-3xl md:text-4xl font-playfair">Experience Luxury Like Never Before</h1>
+                    <h1 className="text-3xl md:text-4xl font-playfair">Trải Nghiệm Sang Trọng Như Chưa Từng Có</h1>
                     <div className="flex flex-wrap items-center mt-3 mb-6 gap-4">
                         {room.amenities.map((item, index) => (
                             <div key={index} className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100">
@@ -125,7 +125,7 @@ const RoomDetails = () => {
                         ))}
                     </div>
                 </div>
-                <p className="text-2xl font-medium">${room.pricePerNight}/night</p>
+                <p className="text-2xl font-medium">${room.pricePerNight}/Đêm</p>
             </div>
 
             {/* Booking Form */}
@@ -134,21 +134,21 @@ const RoomDetails = () => {
 
                 <div className="flex flex-col flex-wrap md:flex-row items-start md:items-center gap-4 md:gap-10 text-gray-500">
                     <div className="flex flex-col">
-                        <label htmlFor="checkIndate" className="font-medium">Check-In</label>
+                        <label htmlFor="checkIndate" className="font-medium">Nhận Phòng</label>
                         <input onChange={(e)=>setCheckInDate(e.target.value)} min={new Date().toISOString().split('T')[0]}  type="date" id="checkIndate"
                             className="w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none"
                             required />
                     </div>
                     <div className="w-px h-15 bg-gray-300/70 max-md:hidden"></div>
                     <div className="flex flex-col">
-                        <label htmlFor="checkOutdate" className="font-medium">Check-Out</label>
+                        <label htmlFor="checkOutdate" className="font-medium">Trả Phòng</label>
                         <input onChange={(e)=>setCheckOutDate(e.target.value)} min={checkInDate} disabled={!checkInDate} type="date" id="checkOutdate"
                             className="w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none"
                             required />
                     </div>
                     <div className="w-px h-15 bg-gray-300/70 max-md:hidden"></div>
                     <div className="flex flex-col">
-                        <label htmlFor="guests" className="font-medium">Guests</label>
+                        <label htmlFor="guests" className="font-medium">Khách</label>
                         <input onChange={(e)=>setGuests(e.target.value)} value={guests} type="number" id="guests" placeholder="1"
                             className="max-w-20 rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none"
                             required />
@@ -156,7 +156,7 @@ const RoomDetails = () => {
                 </div>
                 <button type="submit" className="bg-primary hover:bg-primary-dull active:scale-95 transition-all 
                     text-white rounded-md max-md:w-full max-md:mt-6 md:px-25 py-3 md:py-4  text-base cursor-pointer">
-                    {isAvailable ? " Book Now": "Check Availability"}
+                    {isAvailable ? " Đặt Ngay": "Kiểm Tra Tình Trạng Phòng"}
                 </button>
             </form>
 
@@ -176,7 +176,7 @@ const RoomDetails = () => {
             {/* Description */}
             <div className="max-w-3xl border-y border-gray-300 my-15 py-10 text-gray-500">
                 <p>
-                    Guests will be allocated on the ground floor according to availability. You get a comfortable two-bedroom apartment with a true city feeling. The price quoted is for two guests; please mark the number of guests to get the exact price for groups.
+                    Khách sẽ được phân bổ ở tầng trệt tùy theo tình trạng phòng. Bạn sẽ có một căn hộ hai phòng ngủ thoải mái với cảm giác thành phố thực sự. Giá được báo là cho hai khách; vui lòng đánh dấu số lượng khách để có được giá chính xác cho các nhóm.
                 </p>
             </div>
 
@@ -185,16 +185,16 @@ const RoomDetails = () => {
                 <div className="flex gap-4">
                     <img src={room.hotel.owner.image} alt="Host" className="h-14 w-14 md:w-18 rounded-full" />
                     <div>
-                        <p className="text-lg md:text-xl">Hosted By {room.hotel.name}</p>
+                        <p className="text-lg md:text-xl">Được Đăng Bởi {room.hotel.name}</p>
                         <div className="flex items-center mt-1">
                             <StarRating />
-                            <p className="ml-2">200+ reviews</p>
+                            <p className="ml-2">200+ đánh giá</p>
                         </div>
                     </div>
                 </div>
                 <button className="px-6 py-2.5 mt-4 rounded text-white bg-primary 
                     hover:bg-primary-dull transition-all cursor-pointer">
-                    Contact Now
+                    Liên Hệ Ngay
                 </button>
             </div>
         </div>

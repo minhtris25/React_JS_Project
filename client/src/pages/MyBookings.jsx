@@ -77,9 +77,9 @@ const MyBookings = () => {
         <div className='max-w-6xl mt-8 w-full text-gray-800'>
 
             <div className='hidden md:grid md:grid-cols-[3fr_2fr_1fr] w-full border-b border-gray-300 font-medium text-base py-3'>
-                <div className='w-1/3'>Hotel</div>
-                <div className='w-1/3'>Date & Timings</div>
-                <div className='w-1/3'>Payment</div>
+                <div className='w-1/3'>Khách Sạn</div>
+                <div className='w-1/3'>Ngày & Thời Gian</div>
+                <div className='w-1/3'>Thanh Toán</div>
             </div>
 
             {bookings.map((booking)=>(
@@ -105,22 +105,22 @@ const MyBookings = () => {
                         </div>
                          <div className='flex items-center gap-1 text-sm text-gray-500'>
                             <img src={assets.guestsIcon} alt="guests-icon" />   
-                            <span>Guests: {booking.guests}</span>
+                            <span>Khách: {booking.guests}</span>
                         </div>
-                        <p className='text-base'>Total: ${booking.totalPrice}</p>
+                        <p className='text-base'>Tổng: ${booking.totalPrice}</p>
                     </div>
                 </div>
                 {/* --- Date & Timings --- */}
                 <div className='flex flex-row md:items-center md:gap-12 mt-3 gap-8'>
                     <div>
-                        <p>Check In:</p>
+                        <p>Nhận Phòng:</p>
                         <p className='className="text-gray-500 text-sm"'>
                             {new Date(booking.checkInDate).toDateString()}
                         </p>
                     </div>
 
                     <div>
-                        <p>Check Out:</p>
+                        <p>Trả Phòng:</p>
                         <p className='className="text-gray-500 text-sm"'>
                             {new Date(booking.checkOutDate).toDateString()}
                         </p>
@@ -139,7 +139,7 @@ const MyBookings = () => {
                     {!booking.isPaid && (
                         <button onClick={()=>handlePayment(booking._id)} className='px-4 py-1.5 mt-4 text-xs border border-gray-400 
                         rounded-full hover:bg-gray-50 transition-all cursor-pointer'>
-                            Pay Now
+                            Thanh Toán Ngay
                         </button>
                     )}
                 </div>
