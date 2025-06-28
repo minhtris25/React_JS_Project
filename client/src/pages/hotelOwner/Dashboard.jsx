@@ -92,7 +92,7 @@ const Dashboard = () => {
                                 {/* Cột Tên người dùng */}
                                 <td className='py-3 px-4 text-gray-700 border-t border-gray-300'>
                                     {/* Kiểm tra item.user có tồn tại và có các thuộc tính firstName, lastName */}
-                                    {item.user ? `${item.user.firstName || ''} ${item.user.lastName || ''}`.trim() : 'N/A'}
+                                    {item.user ? `${item.user.username || ''} ${item.user.lastName || ''}`.trim() : 'N/A'}
                                 </td>
 
                                 {/* Cột Tên phòng (Room Name) */}
