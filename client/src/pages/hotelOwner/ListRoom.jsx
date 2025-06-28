@@ -43,18 +43,18 @@ const ListRoom = () => {
 
 return (
   <div>
-    <Title align='left' font='outfit' title='Room Listings' 
-    subTitle='View, edit, or manage all listed rooms. Keep the information up-to-date to provide the best experience for users.'/>
+    <Title align='left' font='outfit' title='Danh sách phòng' 
+    subTitle='Xem, chỉnh sửa hoặc quản lý tất cả các phòng được liệt kê. Cập nhật thông tin để cung cấp trải nghiệm tốt nhất cho người dùng.'/>
     <p className='text-gray-500 mt-8'>All Rooms</p>
 
     <div className='w-full max-w-3xl text-left border border-gray-300 rounded-lg max-h-80 overflow-y-scroll mt-3'>
       <table className='w-full'>
           <thead className='bg-gray-50'>
               <tr>
-                <th className='py-3 px-4 text-gray-800 font-medium'>Name</th>
-                <th className='py-3 px-4 text-gray-800 font-medium max-sm:hidden'>Facility</th>
-                <th className='py-3 px-4 text-gray-800 font-medium '>Price / Night</th>
-                <th className='py-3 px-4 text-gray-800 font-medium text-center'>Actions</th>
+                <th className='py-3 px-4 text-gray-800 font-medium'>Tên</th>
+                <th className='py-3 px-4 text-gray-800 font-medium max-sm:hidden'>Cơ sở</th>
+                <th className='py-3 px-4 text-gray-800 font-medium '>Giá / Đêm</th>
+                <th className='py-3 px-4 text-gray-800 font-medium text-center'>Hoạt Động</th>
               </tr>
             </thead>
             <tbody className='text-sm'>

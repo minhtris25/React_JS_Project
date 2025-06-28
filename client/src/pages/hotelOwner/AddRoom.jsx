@@ -20,11 +20,11 @@ const AddRoom = () => {
     roomType: '',
     pricePerNight: 0,
     amenities: {
-      'Free Wifi' : false,
-      'Free Breakfast': false,
-      'Room Service': false,
-      'Mountain View': false,
-      'Pool Access': false,
+      'Miễn Phí Wifi' : false,
+      'Bữa Sáng Miễn Phí': false,
+      'Dịch Vụ Phòng': false,
+      'Tầm Nhìn Núi': false,
+      'Truy Cập Hồ Bơi': false,
     }
   })
 
@@ -35,7 +35,7 @@ const AddRoom = () => {
       //check if all inputs are filled
       if(!inputs.roomType || !inputs.pricePerNight || !inputs.amenities ||
         !Object.values(images).some(image => image )) {
-        toast.error('Please fill in all the details')
+        toast.error('Vui lòng điền đầy đủ thông tin')
         return;
       }
       setLoading(true);
@@ -59,11 +59,11 @@ const AddRoom = () => {
             roomType: '',
             pricePerNight: 0,
             amenities: {
-              'Free Wifi' : false,
-              'Free Breakfast': false,
-              'Room Service': false,
-              'Mountain View': false,
-              'Pool Access': false,
+              'Miễn Phí Wifi' : false,
+              'Bữa Sáng Miễn Phí': false,
+              'Dịch Vụ Phòng': false,
+              'Tầm Nhìn Núi': false,
+              'Truy Cập Hồ Bơi': false,
             }
           })
           setImages({
@@ -84,8 +84,8 @@ const AddRoom = () => {
 
   return (
     <form onSubmit={onSubmitHandler} >
-      <Title align='left' font='outfit' title='Add Room' 
-      subTitle='Fill in the details carefully and accurate room details, pricing, and amenities, to enhance the user booking expensive. '/>
+      <Title align='left' font='outfit' title='Thêm Phòng Mới' 
+      subTitle='Điền thông tin cẩn thận và chính xác về phòng, giá cả và tiện nghi để nâng cao trải nghiệm đặt phòng của người dùng. '/>
 
       {/* Upload Area For Images */}
       <p className='text-gray-800 mt-10 '>Images</p>
@@ -102,7 +102,7 @@ const AddRoom = () => {
 
       <div className='w-full flex max-sm:flex-col sm:gap-4 mt-4'>
         <div className='flex-1 max-w-48'>
-          <p className='text-gray-800 mt-4'>Room Type</p>
+          <p className='text-gray-800 mt-4'>loại Phòng</p>
           <select 
             value={inputs.roomType} 
             onChange={e => setInputs({ ...inputs, roomType: e.target.value })}
@@ -117,7 +117,7 @@ const AddRoom = () => {
 
         <div>
           <p className='mt-4 text-gray-800'>
-            Price <span className='text-xs'>/night</span>
+            Giá <span className='text-xs'>/Đêm</span>
           </p>
           <input type="number" placeholder='0' className='border border-gray-300 mt-1 rounded p-2 w-24' 
           value={inputs.pricePerNight} onChange={e=> setInputs({...inputs, pricePerNight : e.target.value})}/>
@@ -135,7 +135,7 @@ const AddRoom = () => {
           ))}
         </div>
         <button className='bg-primary text-white px-8 py-2 rounded mt-8 cursor-pointer' disabled={loading}>
-                {loading ? 'Adding...': "Add Room"}
+                {loading ? 'Thêm...': "Thêm Phòng"}
         </button>
     </form>
   )

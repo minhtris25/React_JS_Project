@@ -39,8 +39,8 @@ export const AppProvider = ({ children }) => {
         try {
             const {data} = await axios.get('/api/user', {headers: { Authorization: `Bearer ${await getToken()}`}})
             if (data.success) {
-                setIsOwner(data.role === 'hotelOwner');
-                setSearchedCities(data.recentSearchedCities || [])
+                setIsOwner(data.data.role === 'hotelOwner'); //
+                setSearchedCities(data.data.recentSearchedCities || []); //
         }else {
             setTimeout(() => {
                 fetchUser();
